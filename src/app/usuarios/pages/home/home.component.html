@@ -26,8 +26,17 @@
             <span>Logout</span>
         </button>
     </mat-toolbar>
+    
     <div class="container">
-        <router-outlet></router-outlet>
+        <h1>Listado de Usuarios</h1>
+        <mat-divider></mat-divider>
+        <br>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-4" *ngFor="let usuario of usuarios">
+                <app-usuario-tarjeta [usuario]="usuario"></app-usuario-tarjeta>
+            </div>
+        </div>
     </div>
 
 </mat-sidenav-container>

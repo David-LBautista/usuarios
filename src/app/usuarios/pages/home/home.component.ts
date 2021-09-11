@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
-import { Datum } from '../../interfaces/usuario.interface';
+import { User, Cases } from '../../interfaces/usuario.interface';
 
 @Component({
   selector: 'app-home',
@@ -9,16 +9,21 @@ import { Datum } from '../../interfaces/usuario.interface';
 })
 export class HomeComponent implements OnInit {
 
-  usuarios: Datum[] = [];
+  usuarios: User[] = [];
+
+  respuesta: Cases = {
+    data: []
+  }
 
   constructor(
-    private uService: UsuarioService
+    private uService: UsuarioService,
   ) { }
 
   ngOnInit(): void {
     this.uService.getUsuarios()
-      .subscribe( usuarios => {
-        this.usuarios = usuarios;
+      .subscribe( (response) => {
+        this.respuesta = response;
+        this.usuarios = this.respuesta.data;
       })
   }
 

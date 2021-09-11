@@ -1,1 +1,18 @@
-<p>usuario-tarjeta works!</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{usuario.first_name}}</mat-card-title>
+        <mat-card-subtitle>{{usuario.last_name}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="usuario.avatar" alt="">
+    <mat-card-content>
+        <p>
+            <strong>Email:</strong>{{usuario.email}}
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button 
+                color="info"
+                [routerLink]="['/usuarios/editar', usuario.id]">Editar</button>
+
+    </mat-card-actions>
+</mat-card>

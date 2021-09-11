@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { Datum } from '../interfaces/usuario.interface';
+import { Cases, User } from '../interfaces/usuario.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +15,8 @@ export class UsuarioService {
     private http: HttpClient
   ) { }
 
-  getUsuarios(): Observable<Datum[]>{
-    return this.http.get<Datum[]>(`${this.baseUrl}/api/users`)
+  getUsuarios():Observable<Cases>{
+    return this.http.get<Cases>(`${this.baseUrl}/api/users`)
   }
   
 }
