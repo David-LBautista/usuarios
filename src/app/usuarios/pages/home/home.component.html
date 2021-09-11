@@ -13,10 +13,6 @@
     </mat-sidenav>
 
     <mat-toolbar>
-        <button mat-icon-button color="accent"
-                (click)="sidenav.toggle()">
-            <mat-icon>menu</mat-icon>
-        </button>
         <span class="spacer"></span>
         <div>
             <p>auth usuario</p>
@@ -31,10 +27,9 @@
         <h1>Listado de Usuarios</h1>
         <mat-divider></mat-divider>
         <br>
-
         <div class="row">
-            <div class="col-sm-12 col-md-4" *ngFor="let usuario of usuarios">
-                <app-usuario-tarjeta [usuario]="usuario"></app-usuario-tarjeta>
+            <div class="col-sm-12 col-md-4 mb-4" *ngFor="let usuario of usuarios">
+                <app-usuario-tarjeta [usuario]="usuario" (click)="sidenav.toggle()"></app-usuario-tarjeta>
             </div>
         </div>
     </div>

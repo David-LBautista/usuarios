@@ -6,13 +6,13 @@
     <img mat-card-image [src]="usuario.avatar" alt="">
     <mat-card-content>
         <p>
-            <strong>Email:</strong>{{usuario.email}}
+            <strong>Email:</strong> {{usuario.email}}
         </p>
     </mat-card-content>
-    <mat-card-actions>
-        <button mat-button 
-                color="info"
+    <mat-card-actions class="d-grid">
+        <button mat-button
+                mat-raised-button
+                color="accent"
                 [routerLink]="['/usuarios/editar', usuario.id]">Editar</button>
-
     </mat-card-actions>
 </mat-card>
