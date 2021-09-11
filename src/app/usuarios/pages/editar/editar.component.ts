@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { User } from '../../interfaces/usuario.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from "rxjs/operators";
-import { User } from '../../interfaces/usuario.interface';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-editar',
@@ -10,18 +11,18 @@ import { User } from '../../interfaces/usuario.interface';
 })
 export class EditarComponent implements OnInit {
 
-    usuario:User = {
-      id: 0,
-      avatar: '',
-      first_name: '',
-      last_name: '',
-      email: ''
-    }
+  usuario: User = {
+    id: 0,
+    avatar: '',
+    first_name: '',
+    last_name: '',
+    email: '',
+  }
 
   constructor(
-
-    private activatedRoute: ActivatedRoute,
     private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private uService: UsuarioService
   ) { }
 
   ngOnInit(): void {
@@ -32,9 +33,9 @@ export class EditarComponent implements OnInit {
 
     this.activatedRoute.params
     .pipe(
-      //switchMap( ({id}) => this.hService.getHeroe(id))
+      switchMap( ({id}) => this.uService.getUsuario(id))
     )
-    //.subscribe( heroe => this.heroe = heroe)
+    .subscribe( usuario => console.log(usuario))
   }
 
 }

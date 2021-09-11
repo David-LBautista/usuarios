@@ -1,6 +1,8 @@
 
 <mat-sidenav-container fullscreen>
-    <mat-sidenav #sidenav mode="push">
+
+    <!-- !Sidenav -->
+    <mat-sidenav #sidenav mode="push" [opened]="this.navService.toggleNav.value">
         <mat-toolbar>
             <span>Menu</span>
             <span class="spacer"></span>
@@ -9,9 +11,10 @@
                 <mat-icon>arrow_back</mat-icon>
             </button>
         </mat-toolbar>
-        <app-editar></app-editar>
+        <app-posts></app-posts>
     </mat-sidenav>
 
+    <!-- !Navbar -->
     <mat-toolbar>
         <span class="spacer"></span>
         <div>
@@ -22,16 +25,10 @@
             <span>Logout</span>
         </button>
     </mat-toolbar>
-    
+
+    <!-- !Content -->
     <div class="container">
-        <h1>Listado de Usuarios</h1>
-        <mat-divider></mat-divider>
-        <br>
-        <div class="row">
-            <div class="col-sm-12 col-md-4 mb-4" *ngFor="let usuario of usuarios">
-                <app-usuario-tarjeta [usuario]="usuario" (click)="sidenav.toggle()"></app-usuario-tarjeta>
-            </div>
-        </div>
+        <router-outlet></router-outlet>
     </div>
 
 </mat-sidenav-container>

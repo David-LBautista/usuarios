@@ -18,5 +18,9 @@ export class UsuarioService {
   getUsuarios():Observable<Cases>{
     return this.http.get<Cases>(`${this.baseUrl}/api/users`)
   }
+
+  getUsuario(id:number):Observable<User>{
+    return this.http.get<User>(`${this.baseUrl}/api/users/${id}`)
+  }
   
 }

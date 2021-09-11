@@ -1,0 +1,10 @@
+<div class="container">
+    <h1>Listado de Usuarios</h1>
+    <mat-divider></mat-divider>
+    <br>
+    <div class="row">
+        <div class="col-sm-12 col-md-4 mb-4" *ngFor="let usuario of usuarios">
+            <app-usuario-tarjeta [usuario]="usuario"></app-usuario-tarjeta>
+        </div>
+    </div>
+</div>

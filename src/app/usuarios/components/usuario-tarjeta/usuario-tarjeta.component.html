@@ -9,10 +9,15 @@
             <strong>Email:</strong> {{usuario.email}}
         </p>
     </mat-card-content>
-    <mat-card-actions class="d-grid">
+    <mat-card-actions>
         <button mat-button
                 mat-raised-button
+                (click)="onToggle()"
                 color="accent"
                 [routerLink]="['/usuarios/editar', usuario.id]">Editar</button>
+        <button mat-button
+                mat-raised-button
+                color="primary"
+                [routerLink]="['/usuarios/editar', usuario.id]">Ver Posts</button>
     </mat-card-actions>
 </mat-card>

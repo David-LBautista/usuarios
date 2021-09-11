@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { EditarComponent } from './pages/editar/editar.component';
+import { ListadoComponent } from './pages/listado/listado.component';
 
 const userRoutes: Routes = [
   {
@@ -9,8 +10,8 @@ const userRoutes: Routes = [
     component: HomeComponent,
     children: [
       {
-        path: 'home',
-        component: HomeComponent
+        path: 'listado',
+        component: ListadoComponent
       },
       {
         path: 'editar/:id',
@@ -18,7 +19,7 @@ const userRoutes: Routes = [
       },
       {
         path: '**',
-        redirectTo: 'home'
+        redirectTo: 'listado'
       }
     ]
   }
