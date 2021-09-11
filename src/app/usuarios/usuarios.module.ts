@@ -10,12 +10,14 @@ import { UsuariosRoutingModule } from './usuarios-routing.module';
 // Components
 import { HomeComponent } from './pages/home/home.component';
 import { EditarComponent } from './pages/editar/editar.component';
+import { UsuarioTarjetaComponent } from './components/usuario-tarjeta/usuario-tarjeta.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    EditarComponent
+    EditarComponent,
+    UsuarioTarjetaComponent
   ],
   imports: [
     CommonModule,
