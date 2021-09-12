@@ -37,5 +37,13 @@ export class AuthService {
       )
   }
 
+  validaToken(){
+    if (localStorage.getItem('token')) {
+      return true;
+    }else{
+      return false;
+    }
+  }
+
 
 }

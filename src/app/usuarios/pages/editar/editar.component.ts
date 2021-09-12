@@ -32,7 +32,6 @@ export class EditarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('Hola desde editar component')
   }
 
   onToggle(){
