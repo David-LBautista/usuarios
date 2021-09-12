@@ -30,7 +30,7 @@ export class AuthService {
           }
         }),
         map( resp => resp.token),
-        catchError( err => of(false) )
+        catchError( err => of(false))
       )
   }
 

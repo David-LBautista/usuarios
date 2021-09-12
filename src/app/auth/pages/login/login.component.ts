@@ -3,6 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
+//! Sweet alert
+import Swal from 'sweetalert2';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,14 +15,14 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup = this.fb.group({
-    email: ['eve.holt@reqres.in', [Validators.required, Validators.email]],
-    password: ['cityslicka', [ Validators.required]]
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [ Validators.required]]
   })
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
   ) { }
 
   ngOnInit(): void {
@@ -30,9 +34,13 @@ export class LoginComponent implements OnInit {
     this.authService.login(email, password)
       .subscribe( response => {
         if (response) {
+          console.log(response)
           this.router.navigate(['usuarios/listado'])
         }else{
-          
+          Swal.fire({
+            background: "#fff",
+            text: "No se encontro el usuario",
+          })
         }
       })
     
