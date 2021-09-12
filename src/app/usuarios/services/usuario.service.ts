@@ -23,6 +23,10 @@ export class UsuarioService {
     return this.http.get(`${this.baseUrl}/api/users/${id}`)
   }
 
+  getUsersPage(page:number){
+    return this.http.get(`${this.baseUrl}/api/users?page=${page}`)
+  }
+
   getPosts(id:number){
     const url = 'https://jsonplaceholder.typicode.com'
     return this.http.get(`${url}/posts?userId=${id}`)

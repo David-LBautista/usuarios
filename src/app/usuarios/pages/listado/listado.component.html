@@ -1,4 +1,4 @@
-<div class="container mt-4">
+<div class="container mt-4 animate__animated animate__fadeIn animate__slow">
     <h2>LISTADO DE USUARIOS</h2>
     <mat-divider></mat-divider>
     <br>
@@ -8,3 +8,13 @@
         </div>
     </div>
 </div>
+
+<div class="paginator">
+    <button mat-raised-button color="primary" (click)="prevPage()">
+        <span>Anterior</span>
+    </button>
+    <button mat-raised-button color="primary" (click)="nextPage()">
+        <span>Siguiente</span>
+    </button>
+</div>
+
