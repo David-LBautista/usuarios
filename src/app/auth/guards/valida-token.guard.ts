@@ -17,12 +17,10 @@ export class ValidaTokenGuard implements CanActivate, CanLoad {
   }
 
   canActivate(): Observable<boolean> | boolean {
-    console.log('can activate')
     return this.authService.validaToken();
   }
 
   canLoad(): Observable<boolean> | boolean {
-    console.log('can load')
     return this.authService.validaToken();
   }
 

@@ -1,27 +1,36 @@
 <div class="login">
     <div class="login__container container">
-        <h1>Inicia Sesión</h1>
-        <form class="" [formGroup]="loginForm">
-            <mat-form-field class="example-full-width" appearance="fill" color="accent">
-                <mat-label>Email:</mat-label>
-                <input type="email" matInput formControlName="email">
-            </mat-form-field>
-
+        <div class="login__container-title row">
+            <div class="col-md-9 ">
+                <h1>Inicia Sesión</h1>
+            </div>
+            <div class="login__container-title--icon col-md-3">
+                    <mat-icon style="color: #fff;" class="animate__animated animate__heartBeat animate__repeat-2">info</mat-icon>
+            </div>
+        </div>
+        <form class="" [formGroup]="loginForm" (ngSubmit)="ingresar()">
+            <div>
+                <mat-form-field class="example-full-width" appearance="fill" color="accent">
+                    <mat-label>Email:</mat-label>
+                    <input type="email" matInput formControlName="email">
+                </mat-form-field>
+                <span *ngIf="campoNoValido('email')" class="errors">Debe ser un correo válido</span>
+            </div>
             <mat-form-field class="example-full-width" appearance="fill" color="accent">
                 <mat-label>Password:</mat-label>
                 <input type="password" matInput formControlName="password">
             </mat-form-field>
+            <span *ngIf="campoNoValido('password')" class="errors">El password es requerido</span>
+
             <div class="d-grid">
                 <button mat-raised-button color="accent" (click)="ingresar()">
-                    <span>Con token</span>
+                    <span>Iniciar con token</span>
                 </button>
             </div>
-            
         </form>
-        <div class="d-grid mt-2">
-            <button mat-raised-button color="primary">
-                <span>Sin token</span>
-            </button>
-        </div>
     </div>
 </div>
+
+<button class="fixed-button" mat-button color="primary" aria-label="Example icon button with a home icon">
+        <span>Sin token</span>
+</button>

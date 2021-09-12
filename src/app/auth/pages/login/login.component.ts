@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup = this.fb.group({
@@ -28,6 +29,12 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  campoNoValido( campo:string ){
+    return this.loginForm.controls?.[campo]?.errors && 
+          this.loginForm.controls?.[campo]?.touched
+  }
+
+
   ingresar(){
     const { email, password} = this.loginForm.value;
     this.authService.login(email, password)
@@ -35,9 +42,10 @@ export class LoginComponent implements OnInit {
         if (response) {
           this.router.navigate(['usuarios/listado'])
         }else{
+          this.loginForm.markAllAsTouched();
           Swal.fire({
             background: "#fff",
-            text: "No se encontro el usuario",
+            text: `No se encontro el usuario: ${email}`,
           })
         }
       })
