@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
 import { AuthResponse } from '../interfaces/auth.interface';
-import { catchError, map, tap } from 'rxjs/operators';
+
 import { of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +28,7 @@ export class AuthService {
       .pipe(
         tap( resp => {
           if (resp.token) {
+            localStorage.setItem('token', resp.token)
             this._token = resp.token
           }
         }),
