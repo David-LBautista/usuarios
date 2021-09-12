@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../interfaces/usuario.interface';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from "rxjs/operators";
-import { UsuarioService } from '../../services/usuario.service';
+
+import { SidenavService } from '../../services/sidenav.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-editar',
@@ -11,31 +11,36 @@ import { UsuarioService } from '../../services/usuario.service';
 })
 export class EditarComponent implements OnInit {
 
-  usuario: User = {
+  usuario!: any;
+
+  user = {
     id: 0,
     avatar: '',
     first_name: '',
     last_name: '',
-    email: '',
+    email: ''
   }
+
+  editform: FormGroup = this.fb.group({
+    nombre: ['Hola']
+  })
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private uService: UsuarioService
+    public sideNavService: SidenavService,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
+    console.log('Hola desde editar component')
+  }
 
-    if (!this.router.url.includes('editar') ) {
-      return;
-    }
+  onToggle(){
+    this.sideNavService.toggle();
+  }
 
-    this.activatedRoute.params
-    .pipe(
-      switchMap( ({id}) => this.uService.getUsuario(id))
-    )
-    .subscribe( usuario => console.log(usuario))
+  irListado(){
+    this.router.navigate(['usuarios/listado']);
   }
 
 }

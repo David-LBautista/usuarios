@@ -7,7 +7,7 @@ export interface User {
 }
 
 export interface Cases {
-    data:        User[];
+    data: User[];
 }
 
 export interface Support {

@@ -14,10 +14,6 @@ const userRoutes: Routes = [
         component: ListadoComponent
       },
       {
-        path: 'editar/:id',
-        component: EditarComponent
-      },
-      {
         path: '**',
         redirectTo: 'listado'
       }

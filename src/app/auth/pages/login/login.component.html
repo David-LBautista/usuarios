@@ -1,1 +1,21 @@
-<p>login works!</p>
+<div class="login">
+    <div class="login__container container">
+        <h1>Inicia Sesión</h1>
+        <form class="" [formGroup]="loginForm">
+            <mat-form-field class="example-full-width" appearance="fill" color="accent">
+                <mat-label>Email:</mat-label>
+                <input type="email" matInput formControlName="email">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill" color="accent">
+                <mat-label>Password:</mat-label>
+                <input type="password" matInput formControlName="password">
+            </mat-form-field>
+            <div class="d-grid">
+                <button mat-raised-button color="accent" (click)="ingresar()">
+                    <span>Ingresar</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

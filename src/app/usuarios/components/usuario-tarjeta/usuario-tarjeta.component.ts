@@ -1,6 +1,5 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
-import {  User } from '../../interfaces/usuario.interface';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { User } from '../../interfaces/usuario.interface';
 import { SidenavService } from '../../services/sidenav.service';
 
 @Component({
@@ -8,9 +7,8 @@ import { SidenavService } from '../../services/sidenav.service';
   templateUrl: './usuario-tarjeta.component.html',
   styleUrls: ['./usuario-tarjeta.component.scss']
 })
+
 export class UsuarioTarjetaComponent implements OnInit {
-
-
 
   @Input() usuario!: User;
   
@@ -23,6 +21,7 @@ export class UsuarioTarjetaComponent implements OnInit {
 
   onToggle(){
     this.sideNavService.toggle();
+    console.log(this.usuario.id);
   }
 
 }

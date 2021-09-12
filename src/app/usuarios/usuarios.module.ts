@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 //Material
 import { MaterialModule } from '../material/material.module';
@@ -26,7 +28,8 @@ import { PostsComponent } from './pages/posts/posts.component';
   imports: [
     CommonModule,
     MaterialModule,
-    UsuariosRoutingModule
+    UsuariosRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class UsuariosModule { }

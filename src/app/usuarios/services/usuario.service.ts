@@ -19,8 +19,13 @@ export class UsuarioService {
     return this.http.get<Cases>(`${this.baseUrl}/api/users`)
   }
 
-  getUsuario(id:number):Observable<User>{
-    return this.http.get<User>(`${this.baseUrl}/api/users/${id}`)
+  getUsuario(id:number){
+    return this.http.get(`${this.baseUrl}/api/users/${id}`)
+  }
+
+  getPosts(id:number){
+    const url = 'https://jsonplaceholder.typicode.com'
+    return this.http.get(`${url}/posts?userId=${id}`)
   }
   
 }
