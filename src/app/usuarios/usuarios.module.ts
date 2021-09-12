@@ -15,6 +15,7 @@ import { UsuarioTarjetaComponent } from './components/usuario-tarjeta/usuario-ta
 import { EditarComponent } from './pages/editar/editar.component';
 import { ListadoComponent } from './pages/listado/listado.component';
 import { PostsComponent } from './pages/posts/posts.component';
+import { ErrorPageComponent } from './pages/error-page/error-page.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { PostsComponent } from './pages/posts/posts.component';
     UsuarioTarjetaComponent,
     EditarComponent,
     ListadoComponent,
-    PostsComponent
+    PostsComponent,
+    ErrorPageComponent
   ],
   imports: [
     CommonModule,

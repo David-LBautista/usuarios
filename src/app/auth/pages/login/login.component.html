@@ -5,7 +5,7 @@
                 <h1>Inicia Sesión</h1>
             </div>
             <div class="login__container-title--icon col-md-3">
-                    <mat-icon style="color: #fff;" class="animate__animated animate__heartBeat animate__repeat-2">info</mat-icon>
+                    <mat-icon matTooltip="Prueba con este usuario: eve.holt@reqres.in" mat-tooltip-positio="top" style="color: #fff;" class="animate__animated animate__heartBeat animate__repeat-2">info</mat-icon>
             </div>
         </div>
         <form class="" [formGroup]="loginForm" (ngSubmit)="ingresar()">
@@ -31,6 +31,6 @@
     </div>
 </div>
 
-<button class="fixed-button" mat-button color="primary" aria-label="Example icon button with a home icon">
+<button class="fixed-button" mat-button color="primary">
         <span>Sin token</span>
 </button>

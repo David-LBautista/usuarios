@@ -16,6 +16,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatPaginatorModule} from '@angular/material/paginator';
 
 
@@ -41,6 +42,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatProgressSpinnerModule,
     MatPaginatorModule,
     MatToolbarModule,
+    MatTooltipModule
   ]
 })
 export class MaterialModule { }
