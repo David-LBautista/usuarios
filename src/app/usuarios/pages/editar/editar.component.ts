@@ -1,9 +1,19 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
-import { SidenavService } from '../../services/sidenav.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+//! Interface
 import { User } from '../../interfaces/usuario.interface';
+
+//! Servicios
+import { SidenavService } from '../../services/sidenav.service';
 import { UsuarioService } from '../../services/usuario.service';
+
+//!Forms
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+//! Material
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+
 
 @Component({
   selector: 'app-editar',
@@ -22,6 +32,7 @@ export class EditarComponent implements OnInit, OnChanges {
   constructor(
     public sideNavService: SidenavService,
     private uServivice: UsuarioService,
+    private _snackBar: MatSnackBar,
     private fb: FormBuilder,
   ){ }
 
@@ -36,9 +47,7 @@ export class EditarComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   onToggle(){
     this.sideNavService.toggle();
@@ -46,11 +55,21 @@ export class EditarComponent implements OnInit, OnChanges {
 
   editar() {
     const { nombre, apellido } = this.editform.value;
-
     this.uServivice.updateUser(nombre, apellido, this.user.id)
       .subscribe( response => {
+
+        //! Mensaje personalizado con el snackbar
+        this.mostrarSnackbar('Registro Actualizado...')
+        
+        //! Ver respuesta en consola segun la Api
         console.log(response)
       })
+  }
+
+  mostrarSnackbar(mensaje:string){
+    this._snackBar.open(mensaje, 'ok!',{
+      duration: 3500,
+    })
   }
 
 }

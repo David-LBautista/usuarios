@@ -9,6 +9,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from "@angular/material/input";
 import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -29,6 +30,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatInputModule,
     MatListModule,
     MatGridListModule,
+    MatPaginatorModule,
     MatSidenavModule,
     MatSnackBarModule,
     MatToolbarModule,

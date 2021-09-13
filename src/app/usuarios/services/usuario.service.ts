@@ -23,7 +23,8 @@ export class UsuarioService {
   constructor(
     private http: HttpClient
   ) { }
-
+  
+  //! USUARIOS
   getUsuarios():Observable<Cases>{
     return this.http.get<Cases>(`${this.baseUrl}/api/users`)
   }
@@ -43,13 +44,18 @@ export class UsuarioService {
   }
 
 
-  
+  //! POSTS
   getPosts(id:number):Observable<Post[]>{
     const url = 'https://jsonplaceholder.typicode.com'
     return this.http.get<Post[]>(`${url}/posts?userId=${id}`)
     .pipe(
       map( data => this.posts = data)
     )
+  }
+
+  deletePost(id: number):Observable<any>{
+    const url = 'https://jsonplaceholder.typicode.com'
+    return this.http.delete<any>(`${url}/posts/${id}`);
   }
   
 }

@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
-//! Sweet alert
-import Swal from 'sweetalert2';
+//! Material
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private _snackBar: MatSnackBar,
     private authService: AuthService,
   ) { }
 
@@ -43,12 +44,15 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['usuarios/listado'])
         }else{
           this.loginForm.markAllAsTouched();
-          Swal.fire({
-            background: "#fff",
-            text: `No se encontro el usuario: ${email}`,
-          })
+          this.mostrarSnackbar('No se encontro el usuario...')
         }
       })
+  }
+
+  mostrarSnackbar(mensaje:string){
+    this._snackBar.open(mensaje, 'Cerrar',{
+      duration: 2500
+    })
   }
 
 }

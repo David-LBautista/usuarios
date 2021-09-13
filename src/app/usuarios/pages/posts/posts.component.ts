@@ -1,10 +1,14 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
-import { ActivatedRoute } from '@angular/router';
+//!Interfaces
 import { User } from '../../interfaces/usuario.interface';
 import { Post } from '../../interfaces/posts.interface';
+
+//! Servicios
 import { UsuarioService } from '../../services/usuario.service';
 
+//!Material
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-posts',
@@ -18,7 +22,8 @@ export class PostsComponent implements OnInit, OnChanges {
   posts: Post[] = [];
 
   constructor(
-    private uService: UsuarioService
+    private uService: UsuarioService,
+    private _snackBar: MatSnackBar
   ) { }
   
   ngOnChanges(changes: SimpleChanges): void {
@@ -28,12 +33,27 @@ export class PostsComponent implements OnInit, OnChanges {
       this.uService.getPosts(this.user.id)
       .subscribe( posts => {
         this.posts = posts
-        console.log(this.posts)
       })
     }
   }
   
   ngOnInit(): void {
+  }
+
+  eliminar(post:Post, i:number){
+    //! Removerlo del UI
+    this.posts.splice(i, 1)
+    this.mostrarSnackbar('Registro eliminado...')
+
+    //!Removerlo de la API
+    this.uService.deletePost(post.id)
+      .subscribe( resp => console.log(resp))
+  }
+
+  mostrarSnackbar(mensaje:string){
+    this._snackBar.open(mensaje, 'ok!',{
+      duration: 2500,
+    })
   }
 
 }
