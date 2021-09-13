@@ -7,7 +7,6 @@ import { ListadoComponent } from './pages/listado/listado.component';
 const userRoutes: Routes = [
   {
     path: '',
-    component: HomeComponent,
     children: [
       {
         path: 'listado',

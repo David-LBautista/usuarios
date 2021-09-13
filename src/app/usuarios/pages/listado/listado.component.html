@@ -1,20 +1,68 @@
-<div class="container mt-4 animate__animated animate__fadeIn animate__slow">
-    <h2>LISTADO DE USUARIOS</h2>
-    <mat-divider></mat-divider>
-    <br>
-    <div class="row">
-        <div class="col-sm-12 col-md-4 mb-4" *ngFor="let usuario of usuarios">
-            <app-usuario-tarjeta [usuario]="usuario"></app-usuario-tarjeta>
-        </div>
-    </div>
-</div>
 
-<div class="paginator">
-    <button mat-raised-button color="primary" (click)="prevPage()">
-        <span>Anterior</span>
-    </button>
-    <button mat-raised-button color="primary" (click)="nextPage()">
-        <span>Siguiente</span>
-    </button>
-</div>
+<mat-sidenav-container fullscreen>
+    <mat-toolbar>
+        <span class="spacer"></span>
+        <button mat-button color="accent" (click)="logOut()">
+            <mat-icon>face</mat-icon>
+            <span>Logout</span>
+        </button>
+    </mat-toolbar>
+    <!-- !Sidenav -->
+    <mat-sidenav #sidenav mode="over" [opened]="this.sideNavService.toggleNav.value">
+        <mat-toolbar>
+            <H2>USUARIO</H2>
+            <span class="spacer"></span>
+            <button mat-icon-button color="accent"
+                (click)="sidenav.toggle()">
+                <mat-icon>arrow_back</mat-icon>
+            </button>
+        </mat-toolbar>
+        <div class="container">
+            <app-editar [user]="this.usuario"></app-editar>
+            <app-posts></app-posts>
+        </div>
+    </mat-sidenav>
+
+    <!-- !listado component -->
+    <div class="container mt-4 animate__animated animate__fadeIn animate__slow">
+            <h2>LISTADO DE USUARIOS</h2>
+            <mat-divider></mat-divider>
+            <br>
+            <!-- !CARDS -->
+            <div class="row container">
+                <div class="col-sm-12 col-md-4 mb-4" *ngFor="let usuario of usuarios">
+                    <mat-card>
+                        <mat-card-header>
+                            <mat-card-title>{{usuario.first_name}}</mat-card-title>
+                            <mat-card-subtitle>{{usuario.last_name}}</mat-card-subtitle>
+                        </mat-card-header>
+                        <img mat-card-image [src]="usuario.avatar" alt="">
+                        <mat-card-content>
+                            <p>
+                                <strong>Email:</strong> {{usuario.email}}
+                            </p>
+                        </mat-card-content>
+                        <mat-card-actions class="d-grid">
+                            <button mat-button
+                                    class="hvr-float"
+                                    mat-raised-button
+                                    (click)="onToggle(usuario)"
+                                    color="accent"
+                                    >Editar</button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+            </div>
+            <div class="paginator">
+                <button mat-raised-button color="primary" (click)="prevPage()">
+                    <span>Anterior</span>
+                </button>
+                <button mat-raised-button color="primary" (click)="nextPage()">
+                    <span>Siguiente</span>
+                </button>
+            </div>
+    </div>
+</mat-sidenav-container>
+
+
 

@@ -1,45 +1,45 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 import { SidenavService } from '../../services/sidenav.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { User } from '../../interfaces/usuario.interface';
 
 @Component({
   selector: 'app-editar',
   templateUrl: './editar.component.html',
   styleUrls: ['./editar.component.scss']
 })
-export class EditarComponent implements OnInit {
+export class EditarComponent implements OnInit, OnChanges {
 
-  usuario!: any;
-
-  user = {
-    id: 0,
-    avatar: '',
-    first_name: '',
-    last_name: '',
-    email: ''
-  }
+  @Input() user!: User;
 
   editform: FormGroup = this.fb.group({
-    nombre: ['Hola']
+    nombre: ['', Validators.required],
+    apellido: ['', Validators.required]
   })
 
   constructor(
-    private router: Router,
     public sideNavService: SidenavService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
   ) { }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.user.currentValue != changes.user.previousValue) {
+      this.user = changes.user.currentValue[0];
+
+      this.editform.reset({
+        nombre: this.user.first_name,
+        apellido: this.user.last_name,
+      })
+    }
+  }
+
   ngOnInit(): void {
+
   }
 
   onToggle(){
     this.sideNavService.toggle();
-  }
-
-  irListado(){
-    this.router.navigate(['usuarios/listado']);
   }
 
 }

@@ -1,6 +1,9 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
-import { Cases, User } from '../../interfaces/usuario.interface';
+import { User } from '../../interfaces/usuario.interface';
+import { SidenavService } from '../../services/sidenav.service';
 import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
@@ -11,6 +14,9 @@ import { UsuarioService } from '../../services/usuario.service';
 export class ListadoComponent implements OnInit {
   
   usuarios: User[] = [];
+  usuario!: any;
+
+  //!*PAGINADOR
   page:number = 1;
 
   respuesta: any = {
@@ -18,7 +24,11 @@ export class ListadoComponent implements OnInit {
   }
 
   constructor(
-    private uService: UsuarioService
+    private uService: UsuarioService,
+    public sideNavService: SidenavService,
+    public navService: SidenavService,
+    private router: Router,
+
   ) { }
 
   ngOnInit(): void {
@@ -43,6 +53,17 @@ export class ListadoComponent implements OnInit {
         this.respuesta = response;
         this.usuarios = this.respuesta.data
       })
+  }
+
+  onToggle(user:User){
+    this.sideNavService.toggle();
+    this.usuario = this.usuarios.filter( usuario => user === usuario)
+    console.log(this.usuario)
+  }
+
+  logOut(){
+    localStorage.removeItem('token');
+    this.router.navigate(['auth/login'])
   }
 
 }

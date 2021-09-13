@@ -1,7 +1,7 @@
 
-<div class="container mt-4 row">
+<div class="container mt-4 row" *ngIf="user !== undefined">
     <div class="col-md-8">
-        <h2>EDITANDO A : <span class="name">{{user.first_name}} </span></h2>
+        <h2>EDITANDO A : <span class="name">{{ user.first_name }}</span></h2>
     </div>
 </div>
 <mat-divider></mat-divider>
@@ -12,6 +12,7 @@
                 <mat-label>Nombre:</mat-label>
                 <input matInput
                 formControlName= "nombre"
+                value="{user.first_name}"
                 type="text"
                 required>
             </mat-form-field>
@@ -20,11 +21,16 @@
             <mat-form-field color="accent">
                 <mat-label>Apellido:</mat-label>
                 <input matInput
+                formControlName= "apellido"
                 type="text"
                 required>
             </mat-form-field>
         </div>
 </form>
+
+<span> value </span>
+<pre> {{editform.value | json}}</pre>
+
 
 
 

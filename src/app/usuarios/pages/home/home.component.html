@@ -1,35 +1,7 @@
+<!-- !Content -->
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
 
-<mat-sidenav-container fullscreen>
 
-    <!-- !Sidenav -->
-    <mat-sidenav #sidenav mode="over" [opened]="this.navService.toggleNav.value">
-        <mat-toolbar>
-            <H2>USUARIO</H2>
-            <span class="spacer"></span>
-            <button mat-icon-button color="accent"
-            (click)="sidenav.toggle()">
-            <mat-icon>arrow_back</mat-icon>
-        </button>
-    </mat-toolbar>
-    <div class="container">
-        <app-editar></app-editar>
-        <app-posts></app-posts>
-    </div>
-    </mat-sidenav>
-
-    <!-- !Navbar -->
-    <mat-toolbar>
-        <span class="spacer"></span>
-        <button mat-button color="accent" (click)="logOut()">
-            <mat-icon>face</mat-icon>
-            <span>Logout</span>
-        </button>
-    </mat-toolbar>
-
-    <!-- !Content -->
-    <div class="container">
-        <router-outlet></router-outlet>
-    </div>
-
-</mat-sidenav-container>
 
