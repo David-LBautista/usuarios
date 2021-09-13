@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map,tap } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
 import { Post } from '../interfaces/posts.interface';
-import { Cases, User } from '../interfaces/usuario.interface';
+import { Cases } from '../interfaces/usuario.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +34,12 @@ export class UsuarioService {
 
   getUsersPage(page:number){
     return this.http.get(`${this.baseUrl}/api/users?page=${page}`)
+  }
+
+  updateUser(nombre:string, apellido:string, id:number){
+    const url:string = `https://reqres.in/api/users${id}`
+    const body =  {nombre, apellido};
+    return  this.http.put( url, body);
   }
 
 

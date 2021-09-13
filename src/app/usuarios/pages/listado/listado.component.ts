@@ -58,7 +58,6 @@ export class ListadoComponent implements OnInit {
   onToggle(user:User){
     this.sideNavService.toggle();
     this.usuario = this.usuarios.filter( usuario => user === usuario)
-    console.log(this.usuario)
   }
 
   logOut(){

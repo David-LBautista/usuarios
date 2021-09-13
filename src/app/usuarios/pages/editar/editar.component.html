@@ -6,7 +6,7 @@
 </div>
 <mat-divider></mat-divider>
 
-<form action="" [formGroup]="editform" class="row mt-4">
+<form action="" [formGroup]="editform" class="row mt-4 mb-4">
         <div class="col-md-12">
             <mat-form-field color="accent">
                 <mat-label>Nombre:</mat-label>
@@ -26,10 +26,13 @@
                 required>
             </mat-form-field>
         </div>
+        <div class="edit__button">
+            <button mat-raised-button color="primary" (click)="editar()">
+                <span>Editar</span>
+            </button>
+        </div>
 </form>
-
-<span> value </span>
-<pre> {{editform.value | json}}</pre>
+<mat-divider></mat-divider>
 
 
 

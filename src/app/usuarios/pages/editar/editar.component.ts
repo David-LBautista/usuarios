@@ -3,6 +3,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { SidenavService } from '../../services/sidenav.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../interfaces/usuario.interface';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-editar',
@@ -20,8 +21,9 @@ export class EditarComponent implements OnInit, OnChanges {
 
   constructor(
     public sideNavService: SidenavService,
+    private uServivice: UsuarioService,
     private fb: FormBuilder,
-  ) { }
+  ){ }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.user.currentValue != changes.user.previousValue) {
@@ -40,6 +42,15 @@ export class EditarComponent implements OnInit, OnChanges {
 
   onToggle(){
     this.sideNavService.toggle();
+  }
+
+  editar() {
+    const { nombre, apellido } = this.editform.value;
+
+    this.uServivice.updateUser(nombre, apellido, this.user.id)
+      .subscribe( response => {
+        console.log(response)
+      })
   }
 
 }
