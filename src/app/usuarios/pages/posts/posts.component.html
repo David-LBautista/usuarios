@@ -1,7 +1,7 @@
 <div class="container mt-4 text-center" *ngIf="user !== undefined"> 
         <h2 class="name">POSTS</h2>
 </div>
-<table class="table table-hover">
+<table class="table table-hover" *ngIf="posts.length > 0; else sinPosts">
         <thead>
             <tr>
                 <th class="table-title">User Id</th>
@@ -25,3 +25,10 @@
             </tr>
         </tbody>
     </table>
+
+<ng-template #sinPosts >
+    <div class="sin-posts">
+       <p>No se encontraron posts de este usuario...</p> 
+    </div>
+</ng-template>
+    

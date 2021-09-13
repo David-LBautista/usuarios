@@ -9,6 +9,7 @@ import { UsuarioService } from '../../services/usuario.service';
 
 //!Material
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { PostsService } from '../../services/posts.service';
 
 @Component({
   selector: 'app-posts',
@@ -22,7 +23,7 @@ export class PostsComponent implements OnInit, OnChanges {
   posts: Post[] = [];
 
   constructor(
-    private uService: UsuarioService,
+    private postService: PostsService,
     private _snackBar: MatSnackBar
   ) { }
   
@@ -30,7 +31,7 @@ export class PostsComponent implements OnInit, OnChanges {
     if (changes.user.currentValue != changes.user.previousValue) {
       this.user = changes.user.currentValue[0];
 
-      this.uService.getPosts(this.user.id)
+      this.postService.getPosts(this.user.id)
       .subscribe( posts => {
         this.posts = posts
       })
@@ -46,7 +47,7 @@ export class PostsComponent implements OnInit, OnChanges {
     this.mostrarSnackbar('Registro eliminado...')
 
     //!Removerlo de la API
-    this.uService.deletePost(post.id)
+    this.postService.deletePost(post.id)
       .subscribe( resp => console.log(resp))
   }
 

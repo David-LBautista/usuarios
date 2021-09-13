@@ -23,10 +23,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class EditarComponent implements OnInit, OnChanges {
 
   @Input() user!: User;
-
+  
   editform: FormGroup = this.fb.group({
     nombre: ['', Validators.required],
-    apellido: ['', Validators.required]
+    apellido: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]]
   })
 
   constructor(
@@ -35,27 +36,38 @@ export class EditarComponent implements OnInit, OnChanges {
     private _snackBar: MatSnackBar,
     private fb: FormBuilder,
   ){ }
-
+  
+  //! Recibe el usuario desde el padre y cambia sus valores
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.user.currentValue != changes.user.previousValue) {
       this.user = changes.user.currentValue[0];
-
+      
+      //! Ponemos los valores del usuario en los campos del form
       this.editform.reset({
         nombre: this.user.first_name,
         apellido: this.user.last_name,
+        email: this.user.email
       })
     }
   }
 
   ngOnInit(): void {}
-
+  
+  //! Para abrir y cerrar la modal
   onToggle(){
     this.sideNavService.toggle();
   }
+  
+  //! Mostrar errores si los campos son invalid
+  campoNoValido( campo:string ){
+    return this.editform.controls?.[campo]?.errors && 
+          this.editform.controls?.[campo]?.touched
+  }
+
 
   editar() {
-    const { nombre, apellido } = this.editform.value;
-    this.uServivice.updateUser(nombre, apellido, this.user.id)
+    const { nombre, apellido, email } = this.editform.value;
+    this.uServivice.updateUser(nombre, apellido, email, this.user.id)
       .subscribe( response => {
 
         //! Mensaje personalizado con el snackbar
@@ -65,7 +77,7 @@ export class EditarComponent implements OnInit, OnChanges {
         console.log(response)
       })
   }
-
+  //! Snackbar
   mostrarSnackbar(mensaje:string){
     this._snackBar.open(mensaje, 'ok!',{
       duration: 3500,

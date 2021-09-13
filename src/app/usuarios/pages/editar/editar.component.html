@@ -12,10 +12,10 @@
                 <mat-label>Nombre:</mat-label>
                 <input matInput
                 formControlName= "nombre"
-                value="{user.first_name}"
                 type="text"
                 required>
             </mat-form-field>
+            <span *ngIf="campoNoValido('nombre')" class="errors">El campo nombre es obligatorio.</span>
         </div>
         <div class="col-md-12">
             <mat-form-field color="accent">
@@ -25,9 +25,22 @@
                 type="text"
                 required>
             </mat-form-field>
+            <span *ngIf="campoNoValido('apellido')" class="errors">El campo apellido es obligatorio.</span>
+
         </div>
-        <div class="edit__button">
-            <button mat-raised-button color="primary" (click)="editar()">
+        <div class="col-md-12">
+            <mat-form-field color="accent">
+                <mat-label>Email:</mat-label>
+                <input matInput
+                formControlName= "email"
+                type="text"
+                required>
+            </mat-form-field>
+            <span *ngIf="campoNoValido('email')" class="errors">Debe tener un formato de Email.</span>
+
+        </div>
+        <div class="edit__button mt-4">
+            <button mat-raised-button color="primary" (click)="editar()" [disabled]="editform.invalid">
                 <span>Editar</span>
             </button>
         </div>

@@ -5,6 +5,21 @@
 .table-title{
     color: #69F0AE;
 }
+
 .content{
     color: #fff;
+}
+
+.sin-posts{
+    width: 100%;
+    padding: 10px;
+    background-color: #fff;
+    color: #000;
+    border-radius: 8px;
+
+    & p{
+        text-align: center;
+        margin: 0;
+    }
+
 }
