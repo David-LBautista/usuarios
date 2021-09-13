@@ -1,7 +1,7 @@
 
-<div class="container mt-4 row" *ngIf="user !== undefined">
+<div class="mt-4 row" *ngIf="user !== undefined">
     <div class="col-md-8">
-        <h2>EDITANDO A : <span class="name">{{ user.first_name }}</span></h2>
+        <h2>Editando a: <span class="name">{{ user.first_name | uppercase }}</span></h2>
     </div>
 </div>
 <mat-divider></mat-divider>
