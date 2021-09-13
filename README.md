@@ -5,12 +5,15 @@ Este proyecto fue hecho con [Angular CLI](https://github.com/angular/angular-cli
 ## Otras tecnologías utilizadas
 
 Node: (https://nodejs.org/es/) version 14.17.3
+
 Bootstrap: (https://getbootstrap.com/) version 5, solo utilizado para apoyar con el grid.
+
 Angular Material: (https://material.angular.io/) version 12.2.5
 
 ## Apis utilizadas
 
 Api de usuarios y recursos: (https://reqres.in/).
+
 Api para testing y prototipar: (https://jsonplaceholder.typicode.com/).
 
 ## Development server
@@ -25,8 +28,14 @@ Corre `ng build` para construir tu proyecto a producción. El build se guardara 
 Aplicacion de administracion de usuarios.
 
 -logIn: Pantalla de login con validaciones de usuario y campos, consumiento la api reqres.
+
 -Listado: Pantalla donde mostramos el listado de los usuarios disponibles.
+
 -Editar: Pantalla donde editamos el usuario seleccionado con validacion de campos, ademas de mostrar los posts hechos por el usuario.
+
 -404: Pantalla por si alguna de las rutas es incorrecta.
+
+## Demo
+Para ver el demo ingresa a: (https://cocky-jepsen-2ff7b7.netlify.app)
 
 
