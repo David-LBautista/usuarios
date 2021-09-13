@@ -28,7 +28,7 @@ Corre `ng build` para construir tu proyecto a producción. El build se guardara 
 ## Informacion general
 Aplicacion de administracion de usuarios.
 
--logIn: Pantalla de login con validaciones de usuario y campos, consumiento la api reqres.
+-logIn: Pantalla de login con validaciones de usuario y campos, consumiento la api reqres, cuenta con un guard para proteger la ruta de usuarios y no dejar pasar amenos que estes loggeado.
 
 ![login](https://user-images.githubusercontent.com/48845853/133076326-f69cd922-b8e0-4fd8-ad48-554d79896bac.png)
 
