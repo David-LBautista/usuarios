@@ -10,7 +10,7 @@
     <!-- !Sidenav -->
     <mat-sidenav #sidenav mode="over" [opened]="this.sideNavService.toggleNav.value">
         <mat-toolbar>
-            <H2>USUARIO</H2>
+            <H2>Sidenav</H2>
             <span class="spacer"></span>
             <button mat-icon-button color="accent"
                 (click)="sidenav.toggle()">
@@ -44,7 +44,6 @@
                         </mat-card-content>
                         <mat-card-actions class="d-grid">
                             <button mat-button
-                                    class="hvr-float"
                                     mat-raised-button
                                     (click)="onToggle(usuario)"
                                     color="accent"
