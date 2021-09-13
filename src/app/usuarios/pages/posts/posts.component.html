@@ -1,0 +1,34 @@
+<div class="container mt-4 text-center" *ngIf="user !== undefined"> 
+        <h2 class="name">POSTS</h2>
+</div>
+<table class="table table-hover" *ngIf="posts.length > 0; else sinPosts">
+        <thead>
+            <tr>
+                <th class="table-title">User Id</th>
+                <th class="table-title">Post Id</th>
+                <th class="table-title">Title</th>
+                <th class="table-title">Body</th>
+                <th class="table-title"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let post of posts; index as i">
+                <td class="content">{{post.userId}}</td>
+                <td class="content">{{ post.id}}</td>
+                <td class="content">{{post.title}}</td>
+                <td class="content">{{post.body}}</td>
+                <td>
+                <button mat-raised-button color="warn" (click)="eliminar(post, i)">
+                        <span>Borrar</span>
+                </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+<ng-template #sinPosts >
+    <div class="sin-posts">
+       <p>No se encontraron posts de este usuario...</p> 
+    </div>
+</ng-template>
+    

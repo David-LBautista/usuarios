@@ -1,0 +1,32 @@
+<div class="login">
+    <div class="login__container container">
+        <div class="login__container-title row">
+            <div class="col-md-9 ">
+                <h1>Inicia Sesión</h1>
+            </div>
+            <div class="login__container-title--icon col-md-3">
+                    <mat-icon matTooltip="Prueba con este usuario: eve.holt@reqres.in" mat-tooltip-positio="top" style="color: #fff;" class="animate__animated animate__heartBeat animate__repeat-2">info</mat-icon>
+            </div>
+        </div>
+        <form class="" [formGroup]="loginForm" (ngSubmit)="ingresar()">
+            <div>
+                <mat-form-field class="example-full-width" appearance="fill" color="accent">
+                    <mat-label>Email:</mat-label>
+                    <input type="email" matInput formControlName="email">
+                </mat-form-field>
+                <span *ngIf="campoNoValido('email')" class="errors">Debe ser un usuario válido en formato de Email.</span>
+            </div>
+            <mat-form-field class="example-full-width" appearance="fill" color="accent">
+                <mat-label>Password:</mat-label>
+                <input type="password" matInput formControlName="password">
+            </mat-form-field>
+            <span *ngIf="campoNoValido('password')" class="errors">El password es obligatorio.</span>
+
+            <div class="d-grid">
+                <button mat-raised-button color="accent" [disabled]="loginForm.invalid">
+                    <span>Ingresar</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
