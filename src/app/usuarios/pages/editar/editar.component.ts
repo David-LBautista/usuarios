@@ -25,8 +25,8 @@ export class EditarComponent implements OnInit, OnChanges {
   @Input() user!: User;
   
   editform: FormGroup = this.fb.group({
-    nombre: ['', Validators.required],
-    apellido: ['', Validators.required],
+    nombre: ['', [Validators.required, Validators.minLength(3)]],
+    apellido: ['', [Validators.required, Validators.minLength(4)]],
     email: ['', [Validators.required, Validators.email]]
   })
 

@@ -18,7 +18,6 @@ export class PostsService {
 
   constructor(
     private http: HttpClient
-
   ) { }
 
 

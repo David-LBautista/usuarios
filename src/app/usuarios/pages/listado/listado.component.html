@@ -13,7 +13,7 @@
             <H2>Sidenav</H2>
             <span class="spacer"></span>
             <button mat-icon-button color="accent"
-                (click)="sidenav.toggle()">
+                (click)="this.sideNavService.toggle()">
                 <mat-icon>arrow_back</mat-icon>
             </button>
         </mat-toolbar>
@@ -42,13 +42,14 @@
                                 <strong>Email:</strong> {{usuario.email}}
                             </p>
                         </mat-card-content>
-                        <mat-card-actions class="d-grid">
+                        <div class="d-grid">
                             <button mat-button
-                                    mat-raised-button
-                                    (click)="onToggle(usuario)"
-                                    color="accent"
-                                    >Editar</button>
-                        </mat-card-actions>
+                                mat-raised-button
+                                (click)="onToggle(usuario)"
+                                color="accent"
+                                >Editar</button>
+                        </div>
+                            
                     </mat-card>
                 </div>
             </div>
@@ -62,6 +63,7 @@
             </div>
     </div>
 </mat-sidenav-container>
+
 
 
 
