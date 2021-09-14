@@ -33,7 +33,7 @@ export class PostsComponent implements OnInit, OnChanges {
       
       this.postService.getPosts(this.user.id)
       .subscribe( posts => {
-        // this.posts = posts
+        this.posts = posts
       })
     }
   }
