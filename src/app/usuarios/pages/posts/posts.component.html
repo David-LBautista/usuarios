@@ -1,42 +1,41 @@
-<div class="spinner">  
-    <mat-spinner class="spinner__spin" *ngIf="posts.length == 0; else divPosts"
-    color="accent">
-    </mat-spinner> 
-</div>
-
-
-<ng-template #divPosts>
-    <div class="container mt-4 text-center" *ngIf="user !== undefined"> 
-        <h2 class="name">POSTS</h2>
-</div>
-<table class="table table-hover" *ngIf="posts.length > 0; else sinPosts">
-        <thead>
-            <tr>
-                <th class="table-title">Title</th>
-                <th class="table-title">Body</th>
-                <th class="table-title"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let post of posts; index as i">
-                <td class="content">{{post.title}}</td>
-                <td class="content">{{post.body}}</td>
-                <td>
-                <button mat-raised-button color="warn" (click)="eliminar(post, i)">
-                        <span>Borrar</span>
-                </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-<ng-template #sinPosts >
-    <div class="sin-posts">
-       <p>No se encontraron posts de este usuario...</p> 
-    </div>
+<ng-template #spinner>
+    <div class="spinner">  
+        <mat-spinner class="spinner__spin" 
+        color="accent">
+        </mat-spinner> 
+    </div> 
 </ng-template>
+    <div *ngIf="posts.length > 0; else spinner">
+        <div class="container mt-4 text-center" *ngIf="user !== undefined"> 
+            <h2 class="name">POSTS</h2>
+        </div>
+        <table class="table table-hover" *ngIf="posts.length > 0; else sinPosts">
+            <thead>
+                <tr>
+                    <th class="table-title">Title</th>
+                    <th class="table-title">Body</th>
+                    <th class="table-title"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let post of posts; index as i">
+                    <td class="content">{{post.title}}</td>
+                    <td class="content">{{post.body}}</td>
+                    <td>
+                    <button mat-raised-button color="warn" (click)="eliminar(post, i)">
+                            <span>Borrar</span>
+                    </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     
-</ng-template>
+    <ng-template #sinPosts >
+        <div class="sin-posts">
+           <p>No se encontraron posts de este usuario...</p> 
+        </div>
+    </ng-template>
+    </div>
 
 
     
