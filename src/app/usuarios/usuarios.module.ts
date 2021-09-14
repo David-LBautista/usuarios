@@ -23,7 +23,7 @@ import { ErrorPageComponent } from './pages/error-page/error-page.component';
     EditarComponent,
     ListadoComponent,
     PostsComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
   ],
   imports: [
     CommonModule,
