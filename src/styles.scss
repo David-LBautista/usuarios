@@ -18,3 +18,14 @@ body {
 .spacer{
     flex: 1 1 auto;
 }
+
+.spinner{
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    &__spin{
+        position: absolute;
+        top: 60px;
+    }
+}

@@ -30,7 +30,7 @@ export class PostsComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.user.currentValue != changes.user.previousValue) {
       this.user = changes.user.currentValue[0];
-
+      
       this.postService.getPosts(this.user.id)
       .subscribe( posts => {
         this.posts = posts
